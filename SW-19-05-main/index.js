@@ -43,17 +43,17 @@ app.get('/empresa_produtos_limpeza/v1/pedidos', async (req, res) => {
 });
 
 app.get('/empresa_produtos_limpeza/v1/endereco', async (req, res) => {
-    let pedidos = await buscarEndereco();
+    let endereco = await buscarEndereco();
     res.json(endereco);
 });
 
 app.get('/empresa_produtos_limpeza/v1/stats', async (req, res) => {
-    let pedidos = await buscarStatus();
+    let stats = await buscarStats();
     res.json(stats);
 });
 
 app.get('/empresa_produtos_limpeza/v1/itens', async (req, res) => {
-    let pedidos = await buscarItensPedidos();
+    let itens = await buscarItensPedidos();
     res.json(itens);
 });
 
