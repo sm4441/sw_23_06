@@ -13,6 +13,8 @@ const { inserirPedido } = require('./src/DAO/cliente/addPedido.js');
 const {inserirStatus} = require('./src/DAO/cliente/addStatus.js');
 const {deletarCliente} = require('./src/DAO/cliente/deliteCliente');
 const {deletarItem} = require('./src/DAO/cliente/delitItempedido');
+const { editarCliente } = require('./src/DAO/cliente/editarCliente.js');
+const { editarProduto } = require('./src/DAO/cliente/editarProduto.js');
 
 
 const { conexao, closeConexao, testarConexao } = require('./src/DAO/conexao');
@@ -231,6 +233,23 @@ app.delete('/empresa_produtos_limpeza/v3/itenpedido', async (req, res) =>{
     let { id } = req.body
     let result = await deletarItem(id)
     res.json(result)
+})
+
+
+//editar
+
+app.patch('/empresa_produtos_limpeza/v4/cliente', async (req, res) =>{
+    let {codigo, campo, valor } = req.body
+    let resultado = await editarCliente(codigo, campo, valor)
+    res.status(200).json(resultado)
+    
+})
+
+app.patch('/empresa_produtos_limpeza/v4/produto', async (req, res) =>{
+    let {codigo, campo, valor } = req.body
+    let resultado = await editarProduto(codigo, campo, valor)
+    res.status(200).json(resultado)
+    
 })
 
 
